@@ -1,10 +1,4 @@
 ﻿using AntMe_2_Lib.Definitions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AntMe_2_Lib.GameObject
 {
@@ -32,10 +26,10 @@ namespace AntMe_2_Lib.GameObject
             get { return loadDefault + Caste.LoadModifier; }
         }
 
-        int rangeDefautl = 3;
+        int rangeDefautl = 200;
         public int Range
         {
-            get { return rangeDefautl + Caste.RangeModifier; }
+            get { return rangeDefautl + (Caste.RangeModifier * 50); }
         }
 
         int rotationSpeedDefault = 25;
@@ -57,7 +51,9 @@ namespace AntMe_2_Lib.GameObject
         }
         #endregion
 
-        internal enum InsectStateEnum { WAITING, ROTATE, MOVING, FIGHTING };
+        public enum InsectStateEnum { WAITING, ROTATE, MOVING, FIGHTING };
+        internal InsectStateEnum State = InsectStateEnum.WAITING;
+
         internal object Target = null;
         internal GameobjectCore Carrying = null;
         internal InsectCore FightTarget = null;
@@ -74,8 +70,10 @@ namespace AntMe_2_Lib.GameObject
 
         internal virtual void TickBase() { }
 
-
-
+        public void MoveForward()
+        {
+            State = InsectStateEnum.MOVING;
+        }
 
         public override string ToString()
         {

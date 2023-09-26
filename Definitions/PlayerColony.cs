@@ -17,9 +17,9 @@ namespace AntMe_2_Lib.Definitions
         public Dictionary<Guid, AntSimulator> Ants = new Dictionary<Guid, AntSimulator>();
 
 
-        public void DoTick()
+        public void DoTicks()
         {
-            foreach(AntSimulator sim in Ants.Values)
+            foreach (AntSimulator sim in Ants.Values)
             {
                 sim.Tick();
             }

@@ -15,28 +15,35 @@ namespace AntMe_2_Lib.Simulator
 
         public static void LoadingUserAntsByDll()
         {
-            Assembly assembly = Assembly.LoadFrom(GameSettings.AntImportPath);
+            Colonys.Clear();
 
-
-            if (assembly != null)
+            foreach (string path in GameSettings.AntImportPath)
             {
-                Type[] types = assembly.GetTypes();
+                if (!File.Exists(path))
+                    continue;
 
-                foreach (Type type in types)
+                Assembly assembly = Assembly.LoadFrom(path);
+
+                if (assembly != null)
                 {
-                    if (type.ToString().Contains("AntMe_2_Ants"))
+                    Type[] types = assembly.GetTypes();
+
+                    foreach (Type type in types)
                     {
-                        if (type.GetMethod("Waiting") == null
-                            || type.GetMethod("Init") == null)
-                            continue;
+                        if (type.ToString().Contains("AntMe_2_Ants"))
+                        {
+                            if (type.GetMethod("Waiting") == null
+                                || type.GetMethod("Init") == null)
+                                continue;
 
-                        //AntSimulatorList.Add(CreateAntSimulatorWidthDebugInfo(type));
-                        PlayerColony colony = new PlayerColony();
-                        colony.Player = new PlayerAttribute() { ColonyName = "BLUB", FirstName = "JAHDJK" };
-                        colony.AntType = type;
-                        colony.Ants = new Dictionary<Guid, AntSimulator>();
+                            //AntSimulatorList.Add(CreateAntSimulatorWidthDebugInfo(type));
+                            PlayerColony colony = new PlayerColony();
+                            colony.Player = new PlayerAttribute() { ColonyName = "BLUB", FirstName = "JAHDJK" };
+                            colony.AntType = type;
+                            colony.Ants = new Dictionary<Guid, AntSimulator>();
 
-                        Colonys.Add(Guid.NewGuid(), colony);
+                            Colonys.Add(Guid.NewGuid(), colony);
+                        }
                     }
                 }
             }
