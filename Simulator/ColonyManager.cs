@@ -42,7 +42,7 @@ namespace AntMe_2_Lib.Simulator
                             colony.AntType = type;
                             colony.Ants = new Dictionary<Guid, AntSimulator>();
 
-                            Colonys.Add(Guid.NewGuid(), colony);
+                            Colonys.Add(colony.Guid, colony);
                         }
                     }
                 }

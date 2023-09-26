@@ -38,10 +38,10 @@ namespace AntMe_2_Lib.GameObject
             get { return rotationSpeedDefault + (Caste.RotationSpeedModifier * 5); }
         }
 
-        int speedDefault = 10;
+        int speedDefault = 1000;
         public int Speed
         {
-            get { return speedDefault + (Caste.SpeedModifier * 2);  }
+            get { return speedDefault + (Caste.SpeedModifier * 500);  }
         }
 
         int viewRangeDefault = 5;
@@ -51,8 +51,8 @@ namespace AntMe_2_Lib.GameObject
         }
         #endregion
 
-        public enum InsectStateEnum { WAITING, ROTATE, MOVING, FIGHTING };
-        internal InsectStateEnum State = InsectStateEnum.WAITING;
+        public enum InsectStateEnum { WAITING, ROTATE, MOVING, FIGHTING, DEATH };
+        public InsectStateEnum State = InsectStateEnum.WAITING;
 
         internal object Target = null;
         internal GameobjectCore Carrying = null;
