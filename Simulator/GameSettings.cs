@@ -17,9 +17,9 @@ namespace AntMe_2_Lib.Simulator
             @"C:\Workbench\AntMe!2-Ants\bin\Debug\net6.0\AntMe!2_Ants.dll"
         };
 
-        public static int Rounds = 100;
-        public static float RoundSpeed = 1f;
+        public static int Rounds = 1000;
+        public static float RoundSpeed = 3f;
 
-        public static int MaxAnts = 5;
+        public static int MaxAnts = 100;
     }
 }

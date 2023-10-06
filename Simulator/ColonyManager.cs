@@ -54,8 +54,7 @@ namespace AntMe_2_Lib.Simulator
             if (colony.Ants.Count >= GameSettings.MaxAnts)
                 return null;
 
-            AntSimulator sim = new AntSimulator(colony.AntType);
-
+            AntSimulator sim = new AntSimulator(colony);
             colony.Ants.Add(sim.Guid, sim);
 
             return sim;

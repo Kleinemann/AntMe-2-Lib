@@ -11,6 +11,7 @@ namespace AntMe_2_Lib.Simulator
 
         public Type AntType;
         public dynamic AntObject;
+        public PlayerColony PlayerColony;
 
         public PlayerAttribute SimPlayer
         {
@@ -24,12 +25,13 @@ namespace AntMe_2_Lib.Simulator
             set { Caste = value; }
         }
 
-
-        public AntSimulator(Type type)
+        public AntSimulator(PlayerColony colony)
         {
+            PlayerColony = colony;
+
             //reading the Type
-            AntObject = Activator.CreateInstance(type, true);
-            AntType = type;
+            AntObject = Activator.CreateInstance(colony.AntType, true);
+            AntType = colony.AntType;
 
             ReadAttributes();
 
@@ -107,6 +109,11 @@ namespace AntMe_2_Lib.Simulator
         public override void Tick()
         {
             AntObject.Tick();
+        }
+
+        public override void FindsSugar()
+        {
+            AntObject.FindsSugar();
         }
     }
 }

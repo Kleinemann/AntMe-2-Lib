@@ -25,5 +25,14 @@ namespace AntMe_2_Lib.GameObject
 
         internal override void TickBase() { Tick();  }
         public virtual void Tick() { }
+
+        internal virtual void FindsSugarBase()
+        {
+            FindsSugar();
+        }
+
+        public virtual void FindsSugar()
+        {
+        }
     }
 }
